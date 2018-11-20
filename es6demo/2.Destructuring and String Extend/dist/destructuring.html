@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Destructuring</title>
+</head>
+<body>
+	
+</body>
+<script>function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+/* 数组的解构赋值 具有Iterator接口即可以使用 */
+// 带值 按位赋值
+var a = 1,
+    b = 2,
+    c = 3;
+console.log(a, b, c);
+var _ref = ['foo', 'bar', 'baz'],
+    third = _ref[2];
+console.log(third); // 解构数组赋值
+
+var head = 1,
+    tail = [2, 3, 4];
+console.log(head);
+console.log(tail); // 解构不成功的为undefined
+
+var _ref2 = [],
+    last = _ref2[0];
+console.log(last); // 默认指定默认值
+
+var _ref3 = [],
+    _ref3$ = _ref3[0],
+    foo = _ref3$ === void 0 ? true : _ref3$;
+console.log(foo);
+var x = 'a',
+    _undefined = undefined,
+    y = _undefined === void 0 ? 'b' : _undefined; // 在y被赋值为undefined或者严格等于undefined的时候 都会读取默认值 默认值如果是一个函数那么函数会被直接触发执行
+
+console.log(y);
+/* 对象的解构赋值 */
+
+var _foos$bars = {
+  foos: 'aaa',
+  bars: 'bbb'
+},
+    foos = _foos$bars.foos,
+    bars = _foos$bars.bars; // 正向解构 变量名称 = 需要被解构的对象key值
+
+console.log(foos); // 'aaa'
+
+console.log(bars); // 'bbb'
+
+var obj = {
+  first: 'hello',
+  last: 'world'
+};
+var f = obj.first,
+    l = obj.last; // 对位解构 声明对象变量直接将value值
+
+console.log(f); // 'hello'
+
+console.log(l); // 'world'
+
+var _ref4 = {},
+    _ref4$message = _ref4.message,
+    msg = _ref4$message === void 0 ? 'Something went wrong' : _ref4$message; // 设置默认值
+
+console.log(msg); // 'Something went wrong'
+
+var xshow;
+var _xshow = {
+  xshow: 1
+};
+xshow = _xshow.xshow;
+// 去除括号将会使得该行被解释为代码块
+console.log(xshow);
+var arrlast = [1, 2, 3];
+var firsts = arrlast[0],
+    lasts = arrlast[arrlast.length - 1]; // 将数组作为特殊的字符串进行解构
+
+console.log(firsts);
+console.log(lasts);
+/* 字符串的解构赋值 */
+
+var _hello = 'hello',
+    _hello2 = _slicedToArray(_hello, 5),
+    a1 = _hello2[0],
+    b1 = _hello2[1],
+    c1 = _hello2[2],
+    d1 = _hello2[3],
+    e1 = _hello2[4]; // 按位解构赋值
+
+
+var _hello3 = 'hello',
+    len = _hello3.length; // 特殊的获取字符串长度的解构赋值
+
+console.log(len); // 5
+
+/* 数值和布尔值的解构赋值 */
+
+var _ = 123,
+    sa = _.toString;
+console.log(sa === Number.prototype.toString); // 字符串解构赋值 赋值对应的原型链方法
+
+var _true = true,
+    as = _true.toString;
+console.log(as === Boolean.prototype.toString); // Boolean类型解构赋值 也是赋值对应的原型链方法
+
+/* 函数的解构赋值 */
+
+[[1, 2], [3, 4]].map(function (_ref5) {
+  var _ref6 = _slicedToArray(_ref5, 2),
+      a = _ref6[0],
+      b = _ref6[1];
+
+  return a + b;
+}); // 按位解构赋值 支持默认值</script>
+</html>

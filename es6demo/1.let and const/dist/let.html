@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>let 效果测试</title>
+</head>
+<body>
+	
+</body>
+<script>{
+  var a = 10; // 此处属于块级作用域的效果输出 在同一个作用域中let 同时声明同一个变量名称报错变量重复定义
+
+  var b = 1;
+} // console.log(a) // a is not defined
+
+console.log(b);
+var aa = 456;
+
+function print() {
+  aa = 789; // console.log(aa); // not defined 当前作用域被封闭  let声明的变量不存在变量提升
+
+  var aa = 1011; // TDZ(形成暂时性死区) 在let声明该变量的地方暂时性死区消失
+}
+
+print();
+/* 使用块级作用域替代IIFE(立即执行函数) */
+// IIFE函数
+
+(function () {
+  var tmp = 123456;
+  console.log('IIFE', tmp);
+})();
+
+{
+  var tmp = 123456;
+  console.log('Let', tmp);
+} // 函数声明语句
+
+{
+  var f = function f() {
+    // 可以从外部调用此函数
+    return _a;
+  };
+
+  var _a = 'secret';
+} // 函数表达式
+
+{
+  var _a2 = 'secret';
+
+  var _f = function _f() {
+    // 这个函数不能从外部被调用
+    return _a2;
+  };
+}</script>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Destructuring</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/* 数组的解构赋值 具有Iterator接口即可以使用 */
+	// 带值 按位赋值
+	let [a, b, c] = [1, 2, 3];
+	console.log(a,b,c);
+	let [,,third] = ['foo', 'bar', 'baz'];
+	console.log(third)
+	// 解构数组赋值
+	let [head, ...tail] = [1, 2, 3, 4];
+	console.log(head)
+	console.log(tail);
+	// 解构不成功的为undefined
+	let [last] = [];
+	console.log(last);
+	// 默认指定默认值
+	let [foo = true] = [];
+	console.log(foo);
+	let [x, y = 'b'] = ['a', undefined]; // 在y被赋值为undefined或者严格等于undefined的时候 都会读取默认值 默认值如果是一个函数那么函数会被直接触发执行
+	console.log(y)
+
+	
+	/* 对象的解构赋值 */
+	let { foos, bars } = { foos: 'aaa', bars: 'bbb' }; // 正向解构 变量名称 = 需要被解构的对象key值
+	console.log(foos) // 'aaa'
+	console.log(bars) // 'bbb'
+	let obj = { first: 'hello', last: 'world' }
+	let { first: f, last: l } = obj; // 对位解构 声明对象变量直接将value值
+	console.log(f) // 'hello'
+	console.log(l) // 'world'
+	var { message: msg = 'Something went wrong' } = {}; // 设置默认值
+	console.log(msg) // 'Something went wrong'
+	let xshow;
+	({xshow} = {xshow: 1}); // 去除括号将会使得该行被解释为代码块
+	console.log(xshow)
+	let arrlast = [1, 2, 3];
+	let {0: firsts, [arrlast.length-1]: lasts} = arrlast; // 将数组作为特殊的字符串进行解构
+	console.log(firsts)
+	console.log(lasts);
+
+	
+	/* 字符串的解构赋值 */
+	let [a1, b1, c1, d1, e1] = 'hello'; // 按位解构赋值
+	let {length: len} = 'hello' // 特殊的获取字符串长度的解构赋值
+	console.log(len); // 5
+
+	
+	/* 数值和布尔值的解构赋值 */
+	let {toString: sa} = 123;
+	console.log(sa === Number.prototype.toString); // 字符串解构赋值 赋值对应的原型链方法
+	let {toString: as} = true;
+	console.log(as === Boolean.prototype.toString); // Boolean类型解构赋值 也是赋值对应的原型链方法
+
+
+	/* 函数的解构赋值 */
+	[[1, 2], [3, 4]].map(([a, b]) => a + b) // 按位解构赋值 支持默认值
+</script>
+</html>

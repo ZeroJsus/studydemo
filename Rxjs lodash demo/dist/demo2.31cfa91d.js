@@ -22818,11 +22818,84 @@ var btn = $$('button');
 // 	console.log('执行CPS')
 // })
 
-var observable = Rx.Observable.interval(1000);
-var subscription = observable.subscribe(function (x) {
-  return console.log(x);
-});
-subscription.unsubscribe();
+/* 取消订阅 */
+// var observable = Rx.Observable.interval(1000);
+// var subscription = observable.subscribe(x => console.log(x));
+// subscription.unsubscribe();
+// /* 订阅事件 */
+// var observable1 = Rx.Observable.interval(400);
+// var observable2 = Rx.Observable.interval(300);
+// var subscription = observable1.subscribe(x => console.log('first' + x));
+// var childSubscription = observable2.subscribe(x => console.log('second' + x));
+// // 将订阅变成订阅集合
+// subscription.add(childSubscription);
+// setTimeout(() => {
+//   // 取消集合中所有可观察对象得订阅
+//   subscription.unsubscribe();
+// }, 1000)
+// /* subject主体 */
+// var subject = new Rx.Subject();
+// subject.subscribe({
+//   next: (v) => console.log('observeA:' + v)
+// });
+// subject.subscribe({
+//   next: (v) => console.log('observeB:' + v)
+// });
+// subject.next(1)
+// subject.next(2)
+// /* subject作为观察者 */
+// var subject = new Rx.Subject();
+// subject.subscribe({
+//   next: (v) => console.log('observerA：' + v)
+// })
+// subject.subscribe({
+//   next: (v) => console.log('observerA：' + v)
+// })
+// var observable = Rx.Observable.from([1, 2, 3]);
+// observable.subscribe(subject);
+
+/* 多播Observable */
+// var source = Rx.Observable.from([1,2,3])
+// var subject = new Rx.Subject();
+// var multicasted = source.multicast(subject);
+// multicasted.subscribe({
+//   next: (v) => console.log('observerA' + v)
+// })
+// multicasted.subscribe({
+//   next: (v) => console.log('observerB' + v)
+// })
+// multicasted.connect();
+
+/* 引用计数 */
+
+var source = Rx.Observable.interval(500);
+var subject = new Rx.Subject();
+var multicasted = source.multicast(subject);
+var subscription1, subscription2, subscriptionConnect;
+subscription1 = multicasted.subscribe({
+  next: function next(v) {
+    return console.log('observerA: ' + v);
+  }
+}); // 这里我们应该调用 `connect()`，因为 `multicasted` 的第一个
+// 订阅者关心消费值
+
+subscriptionConnect = multicasted.connect();
+setTimeout(function () {
+  subscription2 = multicasted.subscribe({
+    next: function next(v) {
+      return console.log('observerB: ' + v);
+    }
+  });
+}, 600);
+setTimeout(function () {
+  subscription1.unsubscribe();
+}, 1200); // 这里我们应该取消共享的 Observable 执行的订阅，
+// 因为此后 `multicasted` 将不再有订阅者
+
+setTimeout(function () {
+  subscription2.unsubscribe();
+  subscriptionConnect.unsubscribe(); // 用于共享的 Observable 执行
+}, 2000);
 },{"rxjs/Rx":"node_modules/rxjs/Rx.js"}],"C:/Users/Administrator/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -22850,7 +22923,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51719" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55166" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
