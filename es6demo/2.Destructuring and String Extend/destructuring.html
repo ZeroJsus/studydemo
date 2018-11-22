@@ -40,11 +40,11 @@
 	console.log(msg) // 'Something went wrong'
 	let xshow;
 	({xshow} = {xshow: 1}); // 去除括号将会使得该行被解释为代码块
-	console.log(xshow)
+	console.log(xshow) // 1
 	let arrlast = [1, 2, 3];
 	let {0: firsts, [arrlast.length-1]: lasts} = arrlast; // 将数组作为特殊的字符串进行解构
-	console.log(firsts)
-	console.log(lasts);
+	console.log(firsts) // 1
+	console.log(lasts); // 3
 
 	
 	/* 字符串的解构赋值 */
