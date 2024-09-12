@@ -1,0 +1,1 @@
+coloring(Al, Mi, Geo, Ten, Flo).
