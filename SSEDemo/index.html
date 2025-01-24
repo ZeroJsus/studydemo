@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSE Demo</title>
+</head>
+<body>
+    <h1>Server-Sent Events Demo</h1>
+    <div id="events"></div>
+
+    <script>
+      // 定义一个后端的事件来源 这个来源可以是一个后端的接口
+      // https://developer.mozilla.org/zh-CN/docs/Web/API/Server-sent_events/Using_server-sent_events
+      const eventSource = new EventSource('http://localhost:9099/sse');
+
+      eventSource.onmessage = function(event) {
+          const eventsDiv = document.getElementById('events');
+          const newEventElement = document.createElement('div');
+          newEventElement.textContent = event.data;
+          eventsDiv.appendChild(newEventElement);
+      };
+
+      eventSource.onerror = function(error) {
+          console.error("EventSource failed:", error);
+          eventSource.close();
+      };
+    </script>
+</body>
+</html>
