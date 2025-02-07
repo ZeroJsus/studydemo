@@ -10,21 +10,25 @@
     <div id="events"></div>
 
     <script>
-      // 定义一个后端的事件来源 这个来源可以是一个后端的接口
-      // https://developer.mozilla.org/zh-CN/docs/Web/API/Server-sent_events/Using_server-sent_events
-      const eventSource = new EventSource('http://localhost:9099/sse');
+    // 定义一个后端的事件来源 这个来源可以是一个后端的接口
+    // https://developer.mozilla.org/zh-CN/docs/Web/API/Server-sent_events/Using_server-sent_events
+    const eventSource = new EventSource('http://localhost:9099/sse');
 
-      eventSource.onmessage = function(event) {
-          const eventsDiv = document.getElementById('events');
-          const newEventElement = document.createElement('div');
-          newEventElement.textContent = event.data;
-          eventsDiv.appendChild(newEventElement);
-      };
+    eventSource.onmessage = function(event) {
+        // 一个 MessageEvent 的对象
+        console.log("EventSource message:", event);
+        const eventsDiv = document.getElementById('events');
+        const newEventElement = document.createElement('div');
+        newEventElement.textContent = event.data;
+        eventsDiv.appendChild(newEventElement);
+    };
 
-      eventSource.onerror = function(error) {
-          console.error("EventSource failed:", error);
-          eventSource.close();
-      };
+    eventSource.onerror = function(error) {
+        console.error("EventSource failed:", error);
+        eventSource.close();
+    };
+
+    console.log("eventSource", eventSource);
     </script>
 </body>
 </html>
