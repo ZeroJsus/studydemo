@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document Print Test</title>
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  @media print {
+    .print-hide {
+      display: none;
+    }
+
+    thead {
+      display: table-header-group;
+    }
+  }
+
+  @page {
+    size: A4;
+    margin: 138px 30px 30px 30px;
+  }
+
+  .a4-container {
+    position: relative;
+    width: 200mm;
+    height: 297mm;
+    z-index: 3;
+    background-color: white;
+    margin-top: 10px;
+  }
+  
+  .bg-container {
+    width: 210mm;
+    /* position: fixed; */
+    /* background-color: red; */
+    z-index: 2;
+    top: 0;
+  }
+
+  .header-container {
+    height: 35px;
+    /* background-image: url('./short.png');
+    background-size: 100% 100%; */
+  }
+
+  .header-container > img {
+    /* width: calc(100% + 72px); */
+    width: 100%;
+    height: 35px;
+    position: relative;
+    /* left: -36px; */
+    background-color: white;
+    bottom: -2px;
+  }
+
+  .footer-container {
+    /* background-image: url('./short-footer.png');
+    background-size: 100% 100%; */
+  }
+
+  .footer-container > img {
+    /* width: calc(100% + 72px); */
+    width: 100%;
+    height: 35px;
+    position: relative;
+    /* left: -36px; */
+    background-color: white;
+    top: -2px;
+  }
+
+  .table-container {
+    /* margin: 24px; */
+    /* background-image: url('./long.png'); */
+  }
+
+  .table-container > tbody {
+    border-left: 1px solid #B28247;
+    border-right: 1px solid #B28247;
+  }
+
+  .body-item {
+    background-image: url("./long-border.png");
+    background-size: 100% 100%;
+    >div {
+      text-indent: 64px;
+    }
+  }
+</style>
+<body>
+  <div class="a4-container">
+    这个是基础的类型
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum fugiat consequuntur, totam excepturi animi molestiae facilis veritatis quisquam praesentium odio fuga, veniam libero? Officia nobis dignissimos, impedit quibusdam recusandae excepturi?
+  </div>
+  <div class="a4-container">
+    这是扩展的类型
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis est vero aliquid quia voluptatibus nobis optio autem? Rerum tenetur perspiciatis laboriosam accusamus, repellendus aspernatur dicta cum, ipsam commodi minima labore!
+  </div>
+  <div class="a4-container bg-container">
+
+  </div>
+  <!-- 在使用原生表格进行分页的时候 thead 会自动换行 -->
+  <table class="table-container">
+    <caption>
+      Front-end web developer course 2021
+    </caption>
+    <thead>
+      <tr>
+        <td>
+          <div class="header-container">
+            <img src="./short.png" alt="">
+          </div>
+        </td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <div class="body-item">
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+            <div>
+              张三
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>
+          <div class="footer-container">
+            <img src="./short-footer.png" alt="">
+          </div>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</body>
+</html>

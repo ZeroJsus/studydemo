@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="mypopover" popover>
+    <h2>Help!</h2>
+
+    <p>You can use the following commands to control the app</p>
+
+    <ul>
+      <li>Press <ins>C</ins> to order cheese</li>
+      <li>Press <ins>T</ins> to order tofu</li>
+      <li>Press <ins>B</ins> to order bacon</li>
+    </ul>
+    <hr />
+    <ul>
+      <li>Say "Service" to summon the robot waiter to take your order</li>
+      <li>Say "Escape" to engage the ejector seat</li>
+    </ul>
+  </div>
+  <div>
+    这个是主要的内容四Lorem ipsum dolor sit amet consectetur adipisicing elit. In inventore, reprehenderit qui asperiores, dignissimos, deleniti corporis aut maxime odio iusto facilis fuga? Maxime nihil quasi minus placeat quia tempora iusto.
+  </div>
+</body>
+<script>
+  const popover = document.getElementById("mypopover");
+
+  document.addEventListener("keydown", (event) => {
+    console.log('event.key', event.key);
+    if (event.key.toLowerCase() === "h") {
+      popover.showPopover();
+    }
+    if (event.key.toLowerCase() === "c") {
+      popover.togglePopover();
+    }
+  });
+</script>
+</html>

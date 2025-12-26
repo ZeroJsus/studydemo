@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #dragInBox {
+      width: 400px;
+      height: 400px;
+      background-color: green;
+    }
+  </style>
+</head>
+<body>
+  <div
+    id="dragItem"
+    draggable="true"
+  >
+    这个是用于拖动的元素
+  </div>
+  <div
+    id="dragInBox"
+  >
+    这个是一个用于放置元素的空白元素
+  </div>
+</body>
+<script>
+  // 注意不能在元素上 直接在元素上设置事件 
+  document.addEventListener("DOMContentLoaded", function () {
+    console.log('DOM加载完成')
+
+    // 拖动元素
+    const dragItem = document.getElementById("dragItem");
+    const dragInBox = document.getElementById("dragInBox");
+
+    dragItem.addEventListener("dragstart", function(event) {
+      console.log('开始拖动')
+      console.log('event', event)
+      event.dataTransfer.setData("text/plain", "some data")
+      event.dataTransfer.effectAllowed = "move"
+      event.dataTransfer.dropEffect = "move"
+    })
+
+    // 如果一个拖动元素 拖动到他自己身上也会触发
+    dragItem.addEventListener("dragenter", function(event) {
+      console.log('被拖动')
+      console.log('event', event)
+    })
+
+    // 需要设置 dragover 事件 不然无法触发指定区域中的 drop 事件
+    dragItem.addEventListener("dragover", function(event) {
+      // 需要有此事件 不然 无法触发 drop 事件。 drop 事件 会使用 dragover 事件代为触发
+      event.preventDefault();
+      console.log("在拖动区域内持续拖动");
+      console.log('event', event)
+    })
+
+    dragItem.addEventListener("dragleave", function(event) {
+      console.log("离开拖动的区域");
+      console.log('event', event)
+    })
+
+    dragItem.addEventListener("drop", function(event) {
+      console.log("在拖动区域中放下");
+      console.log('event', event)
+      const data = event.dataTransfer.getData("text/plain")
+      console.log('data', data)
+    })
+
+    dragInBox.addEventListener("dragover", function(event) {
+      // 需要有此事件 不然 无法触发 drop 事件。 drop 事件 会使用 dragover 事件代为触发
+      event.preventDefault();
+      console.log("在拖动区域内持续拖动");
+      console.log('event', event)
+    })
+
+    dragInBox.addEventListener("drop", function(event) {
+      console.log("在拖动区域中放下");
+      console.log('event', event)
+    })
+
+  })
+</script>
+</html>
